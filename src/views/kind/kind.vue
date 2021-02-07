@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="wrapper">
     <ul class="content">
       <li>1</li>

@@ -6,6 +6,7 @@
       </div>
     </naviga-bar>
     <cartList class="cartList"></cartList>
+    <cart-button></cart-button>
   </div>
 </template>
 
@@ -13,15 +14,16 @@
 export default {
 name: "buycar",
   components:{
-    navigaBar,cartList
+    navigaBar,cartList,cartButton
   },
   computed:{
     ...mapGetters(['getCartListLength','getCartList'])
   }
 }
 import navigaBar from '../../components/common/navigationbar/NaviBar'
-  import { mapGetters } from 'vuex'
-  import cartList from "./childComponents/cartList";
+import { mapGetters } from 'vuex'
+import cartList from "./childComponents/cartList";
+import cartButton from "./childComponents/cartButton";
 </script>
 
 <style scoped>
@@ -34,9 +36,6 @@ import navigaBar from '../../components/common/navigationbar/NaviBar'
   color: #ffffff;
 }
   .cartList{
-    position: absolute;
-    top: 44px;
-    bottom: 49px;
-    width: 100%;
+
   }
 </style>

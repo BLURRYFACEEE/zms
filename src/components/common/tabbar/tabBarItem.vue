@@ -29,11 +29,12 @@ data(){
     return this.isActive ?{color:this.activeColor} : {}
     }
   },
-  methods:{
-    itemClick(){
+  methods: {
+    itemClick() {
       this.$router.replace(this.path)
     }
   }
+
 }
 </script>
 

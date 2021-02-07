@@ -12,7 +12,7 @@ const Detail = () => import('../views/detail/Detail.vue')
 const routes = [
   {
     path:'',
-    redirect:'/home'
+    redirect:'/home' 
   },
   {
     path:'/home',

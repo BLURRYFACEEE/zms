@@ -1,6 +1,6 @@
 <template>
   <div class="cartListItem">
-    <check-bottom class="check"></check-bottom>
+    <check-bottom class="check" :is-checked="cartList.checked" @click.native="checkBottomClick"></check-bottom>
     <div class="cartPic"><img :src="cartList.img"></div>
     <div class="cartDetail">
       <div class="cartTitle">
@@ -25,6 +25,11 @@
     },
     components:{
       checkBottom
+    },
+    methods:{
+      checkBottomClick(){
+        this.cartList.checked = !this.cartList.checked
+      }
     }
   }
   import checkBottom from "../../../components/common/checkBottom/checkBottom";

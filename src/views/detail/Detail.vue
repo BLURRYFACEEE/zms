@@ -15,6 +15,7 @@
     <detail-comment :detail-comment="commentInfo" ref="comment"></detail-comment>
     <goods-list :goodslist="recommends" ref="recommend"></goods-list>
   </BScroll>
+  <toast :message="toastMessage" :toast-show="toastShow" />
   <back-top class="back-top" @click.native="backTopClick" v-show="backTopActive"></back-top>
   <detail-bottom @goCart="cartCheck"></detail-bottom>
 </div>
@@ -27,7 +28,9 @@ import {debounce} from "../../common/utils";
 
 export default {
 name: "Detail",
-  components: {DetailBaseInfo, Swiper, detailBar,detailSwiper,detailShop,BScroll,detailInfo,detailParam,detailComment,goodsList,detailBottom,backTop},
+  components: {
+    Toast,
+    DetailBaseInfo, Swiper, detailBar,detailSwiper,detailShop,BScroll,detailInfo,detailParam,detailComment,goodsList,detailBottom,backTop,toast},
   data(){
   return{
     iid:null,
@@ -41,6 +44,8 @@ name: "Detail",
     pagePos:[],
     currentHeight:0,
     backTopActive:false,
+    toastMessage:'12312321',
+    toastShow:false
   }
 },
   created(){
@@ -121,7 +126,20 @@ name: "Detail",
       cartInfo.desc = this.goods.desc
       cartInfo.price = this.goods.nowPrice
       cartInfo.iid = this.iid
-      this.$store.commit('addCart',cartInfo)
+      // this.$store.commit('addCart',cartInfo)
+      // this.$store.dispatch('addCart',cartInfo).then(res=>{
+      //   console.log(res);
+      // })
+
+      this.$store.dispatch('addCart',cartInfo).then(res=>{
+        // this.toastShow = true
+        // this.toastMessage = res
+        // setTimeout(()=>{
+        //   this.toastShow = false
+        //   this.toastMessage = ''
+        // },1500)
+        this.$toast.show(res,3500)
+      })
     }
   }
 }
@@ -129,6 +147,7 @@ import Swiper from "../home/childComponents/swiper/swiper";
 import BScroll from "../../components/common/better-scroll/betterScroll"
 import goodsList from "../../components/content/goods/goodsList";
 import backTop from "../../components/content/backTop/backTop";
+import toast from "../../components/common/toast/Toast";
 
 import detailBar from "./childComponent/detailBar";
 import detailSwiper from "./childComponent/detailSwiper";
@@ -140,6 +159,7 @@ import detailComment from "./childComponent/detailComment";
 import detailBottom from "./childComponent/detailBottom";
 
 import {detail,Goods,Shop,GoodsParam,detailRecommend} from "../../network/detail";
+import Toast from "../../components/common/toast/Toast";
 </script>
 
 <style scoped>

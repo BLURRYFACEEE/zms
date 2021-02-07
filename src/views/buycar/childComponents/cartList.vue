@@ -5,6 +5,7 @@
         <cartr-list-item v-for="(item,index) of getCartList" :key="index" :cart-list="item"></cartr-list-item>
       </div>
     </better-scroll>
+
   </div>
 </template>
 

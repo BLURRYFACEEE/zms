@@ -21,12 +21,15 @@
 <style scoped>
 .checkBottom{
   position: relative;
-  margin: 0;
+  margin: 0px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: 2px solid #cccccc;
   cursor: pointer;
+}
+.checkBottom img{
+  width: 100%;
 }
   .active{
     border-color: red;
