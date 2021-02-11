@@ -126,6 +126,7 @@ name: "Detail",
       cartInfo.desc = this.goods.desc
       cartInfo.price = this.goods.nowPrice
       cartInfo.iid = this.iid
+      cartInfo.checked = true
       // this.$store.commit('addCart',cartInfo)
       // this.$store.dispatch('addCart',cartInfo).then(res=>{
       //   console.log(res);

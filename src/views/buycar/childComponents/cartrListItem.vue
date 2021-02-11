@@ -23,12 +23,21 @@
         type:Object
       }
     },
+    mounted() {
+      console.log('haha')
+    },
+    computed: {
+      nowCartList(){
+        return JSON.parse(JSON.stringify(this.cartList))
+      }
+    },
     components:{
       checkBottom
     },
     methods:{
       checkBottomClick(){
         this.cartList.checked = !this.cartList.checked
+        console.log(this.cartList.checked)
       }
     }
   }

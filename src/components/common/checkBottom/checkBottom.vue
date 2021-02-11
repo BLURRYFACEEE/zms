@@ -11,8 +11,7 @@
     name: "checkBottom",
     props:{
       isChecked:{
-        type:Boolean,
-        default:false
+        type:Boolean
       }
     }
   }

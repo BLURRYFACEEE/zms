@@ -7,6 +7,7 @@
     </naviga-bar>
     <cartList class="cartList"></cartList>
     <cart-button></cart-button>
+<!--    <div class="load"><span>计算中~</span></div>-->
   </div>
 </template>
 
@@ -30,6 +31,7 @@ import cartButton from "./childComponents/cartButton";
 
   #buycar{
     height: 100vh;
+    position: relative;
   }
 .buycarNavigaBar{
   background-color: var(--color-tint);
@@ -37,5 +39,19 @@ import cartButton from "./childComponents/cartButton";
 }
   .cartList{
 
+  }
+  .load {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 40px;
+    box-sizing: content-box;
+    width: 60px;
+    height: 60px;
+    background-color: #42b983;
+    z-index: 2;
   }
 </style>
