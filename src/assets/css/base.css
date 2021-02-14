@@ -33,7 +33,9 @@ a {
   color: var(--color-text);
   text-decoration: none;
 }
-
+ul {
+  list-style: none;
+}
 
 .clear-fix::after {
   clear: both;
