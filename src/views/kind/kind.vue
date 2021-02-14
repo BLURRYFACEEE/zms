@@ -29,6 +29,7 @@ name: "kind",
     getBigCategory().then((res)=>{
       this.bigKindTags = res.data.category.list
       getSmallCategory(this.bigKindTags[this.currentIndex].maitKey).then((res)=>{
+        console.log(res)
         this.smallKindTags = res.data.list
       })
     })

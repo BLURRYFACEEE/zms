@@ -2,8 +2,10 @@
 <better-scroll class="container">
   <ul class="clear-fix">
     <li v-for="(item,index) in smallCategory" class="smallCategory left">
-      <img :src="item.image">
-      <div class="title">{{item.title}}</div>
+      <a :href="item.link">
+        <img :src="item.image">
+        <div class="title">{{item.title}}</div>
+      </a>
     </li>
   </ul>
 </better-scroll>
