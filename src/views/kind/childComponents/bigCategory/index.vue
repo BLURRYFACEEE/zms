@@ -1,10 +1,13 @@
 <template>
-  <ul>
-    <li v-for="(item,index) in bigCategories" :key="index" :class="{bigCategorySelected:index===currentIndex}" @click="bigKindTagsClick(index)">{{item.title}}</li>
-  </ul>
+  <better-scroll class="contain">
+    <ul>
+      <li v-for="(item,index) in bigCategories" :key="index" :class="{bigCategorySelected:index===currentIndex}" @click="bigKindTagsClick(index)">{{item.title}}</li>
+    </ul>
+  </better-scroll>
 </template>
 
 <script>
+import betterScroll from "../../../../components/common/better-scroll/betterScroll";
 export default {
   name: "index",
   data(){
@@ -17,6 +20,9 @@ export default {
       type:Array
     }
   },
+  components:{
+    betterScroll
+  },
   methods:{
     bigKindTagsClick(index){
       this.currentIndex = index
@@ -27,6 +33,10 @@ export default {
 </script>
 
 <style scoped>
+  .contain {
+    height: calc(100vh - 85px);
+    overflow: hidden;
+  }
   .bigCategory li{
     text-align: center;
     padding: 15px 16px;

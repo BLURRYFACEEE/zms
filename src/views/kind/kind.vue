@@ -57,11 +57,6 @@ import betterScroll from "../../components/common/better-scroll/betterScroll";
 </script>
 
 <style scoped>
-.wrapper{
-  height: 150px;
-  background-color: red;
-  overflow: hidden;
-}
   .kind-nav {
     background-color: var(--color-tint);
     color: #efefef;
