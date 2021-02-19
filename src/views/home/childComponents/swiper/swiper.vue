@@ -1,9 +1,17 @@
 <template>
   <div>
     <div class="swiper-img" v-if="banners.length">
-  <a :href="banners[index].link">
-    <img :src="banners[index].image" @load="swiperImgLoad"/>
-  </a>
+<!--  <a :href="banners[index].link">-->
+<!--    <img :src="banners[index].image" @load="swiperImgLoad"/>-->
+<!--  </a>-->
+      <div class="swiperAllImg" ref="swiperAllImg">
+        <a v-for="item in banners" :href="item.link">
+          <img :src="item.image" @load="swiperImgLoad"/>
+        </a>
+        <a :href="banners[0].link">
+          <img :src="banners[0].image" @load="swiperImgLoad"/>
+        </a>
+      </div>
 <!--    <button class="button" id="buttonPre" @click="goPre(index)" >←</button>-->
 <!--    <button class="button" id="buttonNext" @click="goNext(index)">→</button>-->
       <!--    <h2>{{imgArr[index]+index}}</h2>-->
@@ -18,7 +26,7 @@ name: "swiper",
   props: {
     interval: {
       type: Number,
-      default: 3000
+      default: 2000
     },
     banners:{
       type:Array,
@@ -34,21 +42,29 @@ name: "swiper",
   mounted: function () {
       this.startTimer();
   },
+  updated() {
+    this.$refs.swiperAllImg.style.width = 375*(this.banners.length+1)+'px'
+  },
+  destroyed() {
+  clearInterval(this.playTimer)
+  },
   methods:{
     swiperImgLoad(){
       if(!this.isLoad){
         this.$emit('swiperImgDone')
         this.isLoad = true
       }
-
     },
     startTimer: function () {
       this.playTimer = window.setInterval(() => {
-        this.index++
-        // console.log(this.index);
-        if(this.index===this.banners.length){
+        if(this.index===this.banners.length+1){
+          this.$refs.swiperAllImg.style.transition = 'none'
           this.index=0
+        }else {
+          this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         }
+        this.$refs.swiperAllImg.style.transform =  'translateX('+-375*this.index+'px)'
+        this.index++
       }, this.interval)
     },
   goPre(num){
@@ -69,6 +85,11 @@ name: "swiper",
 </script>
 
 <style scoped>
+  .swiperAllImg {
+    width: 1875px;
+    height: 200px;
+    transition: all 1s ease-in-out;
+  }
 .swiper-img{
   width: 100%;
   height: 200px;
@@ -76,11 +97,16 @@ name: "swiper",
   position: relative;
 }
 .swiper-img img{
-  display: flex;
-  text-align: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
+  /*display: flex;*/
+  /*text-align: center;*/
+  /*align-content: center;*/
+  width: 375px;
+  height: 200px;
+  /*width: 100%;*/
+  /*height: 100%;*/
+}
+.swiperAllImg {
+
 }
 
 .button {

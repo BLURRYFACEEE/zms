@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="swiper-img" v-if="banners.length">
-        <img :src="banners[index]"/>
+<!--        <img :src="banners[index]"/>-->
+
+      <div class="swiperAllImg" ref="swiperAllImg">
+          <img v-for="item in banners" :src="item" @load="swiperImgLoad"/>
+          <img :src="banners[0]" @load="swiperImgLoad"/>
+      </div>
 <!--      <button class="button" id="buttonPre" @click="goPre(index)" >←</button>-->
 <!--      <button class="button" id="buttonNext" @click="goNext(index)">→</button>-->
       <!--    <h2>{{imgArr[index]+index}}</h2>-->
@@ -32,6 +37,12 @@ name: "detailSwiper",
   mounted: function () {
     this.startTimer();
   },
+  updated() {
+    this.$refs.swiperAllImg.style.width = 375*(this.banners.length+1)+'px'
+  },
+  destroyed() {
+    clearInterval(this.playTimer)
+  },
   methods:{
     swiperImgLoad(){
       if(!this.isLoad){
@@ -42,11 +53,14 @@ name: "detailSwiper",
     },
     startTimer: function () {
       this.playTimer = window.setInterval(() => {
-        this.index++
-        // console.log(this.index);
-        if(this.index===this.banners.length){
+        if(this.index===this.banners.length+1){
+          this.$refs.swiperAllImg.style.transition = 'none'
           this.index=0
+        }else {
+          this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         }
+        this.$refs.swiperAllImg.style.transform =  'translateX('+-375*this.index+'px)'
+        this.index++
       }, this.interval)
     },
     goPre(num){
@@ -67,6 +81,11 @@ name: "detailSwiper",
 </script>
 
 <style scoped>
+  .swiperAllImg {
+    width: 1875px;
+    height: 300px;
+    transition: all 1s ease-in-out;
+  }
 .swiper-img{
   width: 100%;
   height: 300px;
@@ -74,11 +93,11 @@ name: "detailSwiper",
   position: relative;
 }
 .swiper-img img{
-  display: flex;
-  text-align: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
+  /*display: flex;*/
+  /*text-align: center;*/
+  /*align-content: center;*/
+  width: 375px;
+  height: 300px;
 }
 
 .button {
