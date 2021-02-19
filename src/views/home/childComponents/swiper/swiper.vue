@@ -4,8 +4,8 @@
   <a :href="banners[index].link">
     <img :src="banners[index].image" @load="swiperImgLoad"/>
   </a>
-    <button class="button" id="buttonPre" @click="goPre(index)" >←</button>
-    <button class="button" id="buttonNext" @click="goNext(index)">→</button>
+<!--    <button class="button" id="buttonPre" @click="goPre(index)" >←</button>-->
+<!--    <button class="button" id="buttonNext" @click="goNext(index)">→</button>-->
       <!--    <h2>{{imgArr[index]+index}}</h2>-->
     </div>
 
@@ -71,7 +71,7 @@ name: "swiper",
 <style scoped>
 .swiper-img{
   width: 100%;
-  height: 100px;
+  height: 200px;
   flex-shrink: 0;
   position: relative;
 }

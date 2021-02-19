@@ -2,8 +2,8 @@
   <div>
     <div class="swiper-img" v-if="banners.length">
         <img :src="banners[index]"/>
-      <button class="button" id="buttonPre" @click="goPre(index)" >←</button>
-      <button class="button" id="buttonNext" @click="goNext(index)">→</button>
+<!--      <button class="button" id="buttonPre" @click="goPre(index)" >←</button>-->
+<!--      <button class="button" id="buttonNext" @click="goNext(index)">→</button>-->
       <!--    <h2>{{imgArr[index]+index}}</h2>-->
     </div>
 
@@ -69,7 +69,7 @@ name: "detailSwiper",
 <style scoped>
 .swiper-img{
   width: 100%;
-  height: 200px;
+  height: 300px;
   flex-shrink: 0;
   position: relative;
 }
