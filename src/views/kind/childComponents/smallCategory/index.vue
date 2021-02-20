@@ -41,7 +41,7 @@ export default {
     height: 120px;
   }
   .container {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 100px);
     margin-bottom: 44px;
     overflow: hidden;
   }

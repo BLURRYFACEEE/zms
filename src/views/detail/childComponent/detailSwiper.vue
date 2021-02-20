@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="swiper-img" v-if="banners.length">
+    <div class="swiper-img" v-if="banners.length" ref="swiperImg">
 <!--        <img :src="banners[index]"/>-->
 
       <div class="swiperAllImg" ref="swiperAllImg">
@@ -31,14 +31,17 @@ name: "detailSwiper",
   data(){
     return{
       index:0,
-      isLoad:false
+      isLoad:false,
+      swiperWidth:0
     }
   },
   mounted: function () {
     this.startTimer();
   },
   updated() {
-    this.$refs.swiperAllImg.style.width = 375*(this.banners.length+1)+'px'
+    this.swiperWidth = document.body.clientWidth
+    this.$refs.swiperImg.style.width = this.swiperWidth
+    this.$refs.swiperAllImg.style.width = this.swiperWidth*(this.banners.length+1)+'px'
   },
   destroyed() {
     clearInterval(this.playTimer)
@@ -59,7 +62,7 @@ name: "detailSwiper",
         }else {
           this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         }
-        this.$refs.swiperAllImg.style.transform =  'translateX('+-375*this.index+'px)'
+        this.$refs.swiperAllImg.style.transform =  'translateX('+-this.swiperWidth*this.index+'px)'
         this.index++
       }, this.interval)
     },

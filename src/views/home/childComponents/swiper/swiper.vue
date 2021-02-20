@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="swiper-img" v-if="banners.length">
+    <div class="swiper-img" v-if="banners.length" ref="swiperImg">
 <!--  <a :href="banners[index].link">-->
 <!--    <img :src="banners[index].image" @load="swiperImgLoad"/>-->
 <!--  </a>-->
@@ -26,7 +26,7 @@ name: "swiper",
   props: {
     interval: {
       type: Number,
-      default: 2000
+      default: 3000
     },
     banners:{
       type:Array,
@@ -36,14 +36,17 @@ name: "swiper",
   data(){
   return{
     index:0,
-    isLoad:false
+    isLoad:false,
+    swiperWidth:0
   }
   },
   mounted: function () {
       this.startTimer();
   },
   updated() {
-    this.$refs.swiperAllImg.style.width = 375*(this.banners.length+1)+'px'
+  this.swiperWidth = document.body.clientWidth
+    this.$refs.swiperImg.style.width = this.swiperWidth
+    this.$refs.swiperAllImg.style.width = this.swiperWidth*(this.banners.length+1)+'px'
   },
   destroyed() {
   clearInterval(this.playTimer)
@@ -63,7 +66,7 @@ name: "swiper",
         }else {
           this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         }
-        this.$refs.swiperAllImg.style.transform =  'translateX('+-375*this.index+'px)'
+        this.$refs.swiperAllImg.style.transform =  'translateX('+-this.swiperWidth*this.index+'px)'
         this.index++
       }, this.interval)
     },

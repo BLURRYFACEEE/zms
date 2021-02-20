@@ -43,9 +43,10 @@ data(){
   flex: 1;
   text-align: center;
   height: 49px;
+  margin-top: 5px;
 }
 .tabbar_item img{
-  width: 48px;
+  /*width: 48px;*/
   height: 24px;
 }
 .active{

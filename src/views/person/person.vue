@@ -2,14 +2,16 @@
   <div id="person">
     <navi-bar class="kind-nav" ><div slot="center">个人中心</div></navi-bar>
     <div class="userInfo">
-      <div class="userAvatarALogin">
-        <div class="avatar"></div>
-        <div class="login">
-          <div>登录/注册</div>
-          <div class="phone"><img src="../../assets/image/person/phone.png" class="phoneImg"><span>暂无绑定手机号</span></div>
+      <a href="#">
+        <div class="userAvatarALogin">
+          <div class="avatar"></div>
+          <div class="login">
+            <div>登录/注册</div>
+            <div class="phone"><img src="../../assets/image/person/phone.png" class="phoneImg"><span>暂无绑定手机号</span></div>
+          </div>
+          <div class="rightArrow"><img src="../../assets/image/person/rightArrow.png"></div>
         </div>
-        <div class="rightArrow"><img src="../../assets/image/person/rightArrow.png"></div>
-      </div>
+      </a>
       <div class="mine">
         <div class="mineArea myMoney"><div class="numArea"><span class="num">0.00</span>元</div><div>我的余额</div></div>
         <div class="mineArea myCount"><div class="numArea"><span class="num">0</span>个</div><div>我的优惠</div></div>
