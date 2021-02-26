@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
   .contain {
-    height: calc(100vh - 85px);
+    height: calc(100vh - 100px);
     overflow: hidden;
   }
   .bigCategory li{

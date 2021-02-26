@@ -71,7 +71,7 @@
 <style scoped>
 .cartButton{
   position: fixed;
-  bottom: 49px;
+  bottom: 54px;
   height: 36px;
   left: 0;
   right: 0;

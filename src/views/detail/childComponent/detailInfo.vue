@@ -1,7 +1,9 @@
 <template>
 <div class="detail-info">
   <div class="info-desc">
-    <p>{{detailInfo.desc}}</p>
+    <div class="descDecorate"></div>
+    <div><p>{{detailInfo.desc}}</p></div>
+    <div class="descDecorateTailDiv"><div class="descDecorateTail"></div></div>
   </div>
   <div class="info-part" v-for="item in detailInfo.detailImage">
     <div class="info-title" >
@@ -49,6 +51,47 @@ name: "detailInfo",
 .detail-info{
   margin-top: 5px;
 }
+.descDecorate {
+  display: inline-block;
+  width: 20%;
+  border-bottom: 1px solid #000;
+  margin-left: 10px;
+}
+.info-desc p{
+  margin: 10px 20px;
+  font-size: 15px;
+}
+.descDecorate::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+}
+.descDecorateTailDiv {
+  height: 20px;
+}
+.descDecorateTail {
+  float: right;
+  width: 20%;
+  border-bottom: 1px solid #000;
+  margin-right: 10px;
+}
+/*.descDecorateTail::before {*/
+/*  content: '';*/
+/*  display: inline-block;*/
+/*  width: 8px;*/
+/*  height: 8px;*/
+/*  background-color: #000;*/
+/*}*/
+.descDecorateTail::after {
+  content: '';
+  float: right;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  margin-bottom: 4px;
+}
 .info-image{
   display: flex;
   margin-bottom: 1px;
@@ -58,4 +101,7 @@ name: "detailInfo",
   width: 100%;
   /*height: 512px;*/
 }
+  .info-title {
+    margin-bottom: 5px;
+  }
 </style>

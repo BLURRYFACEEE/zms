@@ -71,7 +71,7 @@ name: "detailShop",
 .cell-goods-num{
   display: flex;
   border-right: 1px solid rgba(0,0,0,.1);
-  padding-right: 10px;
+  padding-right: 40px;
 }
 .shop-score{
   font-size: 13px;
