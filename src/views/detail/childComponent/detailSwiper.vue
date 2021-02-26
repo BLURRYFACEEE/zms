@@ -7,10 +7,11 @@
 <!--          <img v-for="item in banners" :src="item" @load="swiperImgLoad"/>-->
 <!--          <img :src="banners[0]" @load="swiperImgLoad"/>-->
 <!--      </div>-->
+<!--   路径无http，HBuilder打包成app后无法识别   -->
       <div class="swiperAllImg" ref="swiperAllImg">
-          <img :src="banners[banners.length-1]" @load="swiperImgLoad"/>
-          <img v-for="item in banners" :src="item" @load="swiperImgLoad"/>
-          <img :src="banners[0]" @load="swiperImgLoad"/>
+          <img :src="'http:'+banners[banners.length-1]" @load="swiperImgLoad"/>
+          <img v-for="item in banners" :src="'http:'+item" @load="swiperImgLoad"/>
+          <img :src="'http:'+banners[0]" @load="swiperImgLoad"/>
       </div>
 <!--      <button class="button" id="buttonPre" @click="goPre(index)" >←</button>-->
 <!--      <button class="button" id="buttonNext" @click="goNext(index)">→</button>-->
@@ -67,16 +68,12 @@ name: "detailSwiper",
     },
     swapImg(){
       this.$refs.swiperImg.addEventListener('touchstart',(e)=>{
-        console.log('start')
-        console.log(this.playTimer)
         window.clearInterval(this.playTimer)
         this.touchStartX= e.touches[0].clientX
         this.$refs.swiperAllImg.style.transition = 'none'
       })
       this.$refs.swiperImg.addEventListener('touchmove',(e)=>{
-        console.log('move')
         let touchX = e.touches[0].clientX
-        console.log('what index ' + this.index)
         if (this.startTimerCheck) {
           this.index--
           this.startTimerCheck = false
@@ -84,7 +81,6 @@ name: "detailSwiper",
         this.$refs.swiperAllImg.style.transform =  'translateX('+(touchX-this.touchStartX-this.swiperWidth*(this.index))+'px)'
       })
       this.$refs.swiperImg.addEventListener('touchend',(e)=>{
-        console.log('end')
         this.startTimer()
         this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         let touchX = e.changedTouches[0].clientX
@@ -132,7 +128,6 @@ name: "detailSwiper",
         this.startTimerCheck = true
         this.$refs.swiperAllImg.style.transform =  'translateX('+-this.swiperWidth*this.index+'px)'
         this.index++
-        console.log('this.index'+this.index)
       }, this.interval)
     },
     goPre(num){

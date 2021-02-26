@@ -121,7 +121,7 @@ name: "Detail",
     },
     cartCheck(){
       const cartInfo = {}
-      cartInfo.img = this.banner[0]
+      cartInfo.img = 'http:'+this.banner[0]
       cartInfo.title = this.goods.title
       cartInfo.desc = this.goods.desc
       cartInfo.price = this.goods.nowPrice

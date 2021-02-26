@@ -13,7 +13,7 @@
   </div>
   <div class="service" >
     <span v-for="item in detailGoods.services">
-    <img :src="item.icon" v-show="item.icon">
+    <img :src="'http:'+item.icon" v-show="item.icon">
     <span>{{item.name}}</span>
     </span>
   </div>

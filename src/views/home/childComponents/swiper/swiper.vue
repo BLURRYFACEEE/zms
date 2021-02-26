@@ -56,7 +56,6 @@ name: "swiper",
     this.$refs.swiperAllImg.style.width = this.swiperWidth*(this.banners.length+2)+'px'
     this.$refs.swiperAllImg.style.transition = 'none'
     this.$refs.swiperAllImg.style.transform =  'translateX(-'+this.swiperWidth+'px)'
-    // this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
     this.swapImg()
   },
   destroyed() {
@@ -65,16 +64,12 @@ name: "swiper",
   methods:{
   swapImg(){
     this.$refs.swiperImg.addEventListener('touchstart',(e)=>{
-      console.log('start')
-      console.log(this.playTimer)
       window.clearInterval(this.playTimer)
       this.touchStartX= e.touches[0].clientX
       this.$refs.swiperAllImg.style.transition = 'none'
     })
     this.$refs.swiperImg.addEventListener('touchmove',(e)=>{
-      console.log('move')
       let touchX = e.touches[0].clientX
-      console.log('what index ' + this.index)
       if (this.startTimerCheck) {
         this.index--
         this.startTimerCheck = false
@@ -82,7 +77,6 @@ name: "swiper",
       this.$refs.swiperAllImg.style.transform =  'translateX('+(touchX-this.touchStartX-this.swiperWidth*(this.index))+'px)'
     })
     this.$refs.swiperImg.addEventListener('touchend',(e)=>{
-      console.log('end')
       this.startTimer()
       this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
       let touchX = e.changedTouches[0].clientX
@@ -110,7 +104,6 @@ name: "swiper",
             this.index = 1
             this.$refs.swiperAllImg.style.transform =  'translateX(-'+this.swiperWidth+'px)'
           },1000)
-          // this.$refs.swiperAllImg.style.transform =  'translateX('+'0px)'
         }else {
           this.$refs.swiperAllImg.style.transition = 'all 1s ease-in-out'
         }
@@ -136,7 +129,6 @@ name: "swiper",
         this.startTimerCheck = true
         this.$refs.swiperAllImg.style.transform =  'translateX('+-this.swiperWidth*this.index+'px)'
         this.index++
-        console.log('this.index'+this.index)
       }, this.interval)
     },
   goPre(num){

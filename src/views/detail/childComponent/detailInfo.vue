@@ -8,7 +8,7 @@
       <p>{{item.key}}</p>
     </div>
     <div class="info-image" v-for="item2 in item.list">
-      <img :src="item2" @load="imgLoadCheck">
+      <img :src="'http:'+item2" @load="imgLoadCheck">
     </div>
   </div>
 </div>
@@ -53,5 +53,9 @@ name: "detailInfo",
   display: flex;
   margin-bottom: 1px;
   border-bottom: 1px solid #99ffd1;
+}
+.info-image img{
+  width: 100%;
+  /*height: 512px;*/
 }
 </style>

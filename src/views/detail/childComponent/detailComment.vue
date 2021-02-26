@@ -6,7 +6,7 @@
   </div>
   <div class="comment-middle">
     <div class="comment-author">
-      <img :src="detailComment.user.avatar">
+      <img :src="'http:'+detailComment.user.avatar">
       <span>{{detailComment.user.uname}}</span>
     </div>
     <div class="comment-detail">
@@ -16,7 +16,7 @@
         <span>{{detailComment.style}}</span>
       </div>
       <div class="detail-img" >
-        <img :src="item" v-for="item in detailComment.images">
+        <img :src="'http:'+item" v-for="item in detailComment.images">
       </div>
     </div>
     <div>

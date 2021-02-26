@@ -12,7 +12,7 @@ const Detail = () => import('../views/detail/Detail.vue')
 const routes = [
   {
     path:'',
-    redirect:'/home' 
+    redirect:'/home'
   },
   {
     path:'/home',
@@ -38,7 +38,15 @@ const routes = [
 
 const router = new VueRouter({
   routes,
-  mode:'history'
+  // mode:'history'
 })
 
+router.onError((error) => {
+  const pattern = /Loading chunk (\d)+ failed/g;
+  const isChunkLoadFailed = error.message.match(pattern);
+  const targetPath = router.history.pending.fullPath;
+  if (isChunkLoadFailed) {
+    router.replace(targetPath);
+  }
+});
 export default router

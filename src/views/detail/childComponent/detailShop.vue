@@ -1,7 +1,7 @@
 <template>
 <div class="shop">
   <div class="shop-base" >
-    <img :src="detailShop.shopLogo">
+    <img :src="'http:'+detailShop.shopLogo">
     <span>{{detailShop.shopName}}</span>
   </div>
   <div class="shop-detail">
